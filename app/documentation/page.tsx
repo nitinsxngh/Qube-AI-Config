@@ -284,7 +284,13 @@ npm run dev`}</Code>
                 [<Inline>OPENAI_API_KEY</Inline>, "Yes", "Chat + embeddings + topic discovery"],
                 [<Inline>PINECONE_API_KEY</Inline>, "Yes", "Vector store"],
                 [<Inline>PINECONE_INDEX_NAME</Inline>, "Yes", "Default chatbot-avatar"],
-                [<Inline>PINECONE_CLOUD</Inline> / <Inline>REGION</Inline>, "Ingest", "Index creation"],
+                [
+                  <>
+                    <Inline>PINECONE_CLOUD</Inline> / <Inline>REGION</Inline>
+                  </>,
+                  "Ingest",
+                  "Index creation",
+                ],
                 [<Inline>MONGODB_URI</Inline>, "Yes", "Sessions, catalogs, users, API keys"],
                 [<Inline>JWT_SECRET</Inline>, "Prod", "Sign login tokens (set a long random string)"],
                 [<Inline>ASSISTANT_*</Inline>, "Optional", "Name, role, organisation"],
@@ -725,10 +731,30 @@ X-API-Key: cav_…`}</Code>
               rows={[
                 [<Inline>document_id</Inline>, "Per-file replace on re-ingest"],
                 [<Inline>page_number</Inline>, "Page filter (“page 12”) + UI"],
-                [<Inline>primary_topic</Inline> / <Inline>topics</Inline>, "Dynamic topic filter"],
-                [<Inline>section_title</Inline> / <Inline>section_path</Inline>, "Hierarchy context"],
-                [<Inline>structure_type</Inline> / <Inline>block_type</Inline>, "paragraph / list / …"],
-                [<Inline>source</Inline> / <Inline>title</Inline> / <Inline>author</Inline>, "Provenance"],
+                [
+                  <>
+                    <Inline>primary_topic</Inline> / <Inline>topics</Inline>
+                  </>,
+                  "Dynamic topic filter",
+                ],
+                [
+                  <>
+                    <Inline>section_title</Inline> / <Inline>section_path</Inline>
+                  </>,
+                  "Hierarchy context",
+                ],
+                [
+                  <>
+                    <Inline>structure_type</Inline> / <Inline>block_type</Inline>
+                  </>,
+                  "paragraph / list / …",
+                ],
+                [
+                  <>
+                    <Inline>source</Inline> / <Inline>title</Inline> / <Inline>author</Inline>
+                  </>,
+                  "Provenance",
+                ],
                 [<Inline>word_count</Inline>, "Thin-chunk filtering"],
                 [<Inline>collection_namespace</Inline>, "Debug stamp of ingest namespace"],
               ]}
