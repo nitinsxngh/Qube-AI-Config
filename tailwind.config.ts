@@ -30,7 +30,7 @@ const config: Config = {
           text: "#1d1d1f",
           secondary: "#86868b",
           border: "#d2d2d7",
-          accent: "#0071e3",
+          accent: "#8b0d64",
           fill: "#f5f5f7",
           bubble: "#e9e9eb",
         },

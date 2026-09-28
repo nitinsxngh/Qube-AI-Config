@@ -459,7 +459,7 @@ export default function IntentsPage() {
                 </select>
                 <span className="mt-1 block text-[11px] font-normal text-[#86868b]">
                   Configure available names on{" "}
-                  <Link href="/rag/functions" className="text-[#0071e3]">
+                  <Link href="/rag/functions" className="text-[#8b0d64]">
                     Functions
                   </Link>
                   .

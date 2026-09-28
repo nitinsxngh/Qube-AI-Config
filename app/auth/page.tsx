@@ -488,7 +488,7 @@ export default function AuthPage() {
                       <li
                         key={u.id}
                         className={`flex flex-wrap items-center justify-between gap-2 px-6 py-3 ${
-                          selectedUserId === u.id ? "bg-[#0071e3]/05" : ""
+                          selectedUserId === u.id ? "bg-[#8b0d64]/05" : ""
                         }`}
                       >
                         <button

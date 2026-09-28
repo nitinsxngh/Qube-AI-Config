@@ -24,7 +24,7 @@ export const PALETTE_ITEMS: PaletteItem[] = [
     label: "Start",
     description: "Flow entry point",
     badge: "St",
-    accent: "#0071e3",
+    accent: "#8b0d64",
   },
   {
     type: MESSAGE_NODE,

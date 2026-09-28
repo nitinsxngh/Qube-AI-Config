@@ -67,7 +67,7 @@ function Inline({ children }: { children: ReactNode }) {
 
 function DocLink({ href, children }: { href: string; children: ReactNode }) {
   return (
-    <Link href={href} className="font-medium text-[#0071e3] hover:underline">
+    <Link href={href} className="font-medium text-[#8b0d64] hover:underline">
       {children}
     </Link>
   );
@@ -146,7 +146,7 @@ export default function DocumentationPage() {
             Documentation
           </h1>
           <p className="mt-1 max-w-3xl text-[15px] leading-relaxed text-[#86868b]">
-            Complete product and engineering guide for Chatbot Avatar: architecture,
+            Complete product and engineering guide for QubeAI Config: architecture,
             ingest, RAG retrieval, intent forms, domain-locked embed widgets, leads,
             analytics, published chatbots / QubeAI, and the full HTTP API.
           </p>
@@ -157,7 +157,7 @@ export default function DocumentationPage() {
           <Card>
             <SectionTitle id="overview">Overview</SectionTitle>
             <P>
-              Chatbot Avatar is a retrieval-augmented generation (RAG) assistant
+              QubeAI Config is a retrieval-augmented generation (RAG) assistant
               with a Next.js control panel and a FastAPI backend. Documents are
               structure-parsed, chunked with enriched metadata, and stored in
               Pinecone. Chat answers use intent routing (built-in + custom intent
@@ -433,7 +433,7 @@ X-API-Key: cav_…`}</Code>
               <Inline>.env</Inline>. Dynamic keys can also be changed per chat
               session in RAG Settings and included in published configs. Auth /
               JWT / seed users are documented under{" "}
-              <a href="#auth" className="font-medium text-[#0071e3] hover:underline">
+              <a href="#auth" className="font-medium text-[#8b0d64] hover:underline">
                 Auth &amp; users
               </a>{" "}
               (not in Settings).
@@ -493,7 +493,7 @@ X-API-Key: cav_…`}</Code>
                 [<Inline>MODEL_NAME</Inline>, "gpt-4o-mini", "model", "Chat LLM"],
                 [<Inline>TEMPERATURE</Inline>, "0.2", "model", "Sampling temperature"],
                 [<Inline>EMBEDDING_MODEL</Inline>, "text-embedding-3-small", "model", "Embeddings (ingest + query)"],
-                [<Inline>LANGUAGE</Inline>, "en", "model", "Response language (ISO 639-1)"],
+                [<Inline>LANGUAGE</Inline>, "en", "assistant", "Response language (ISO 639-1)"],
                 [<Inline>RETRIEVE_K</Inline>, "10", "retrieval", "Pinecone candidates before rerank"],
                 [<Inline>RERANK_TOP_N</Inline>, "3", "retrieval", "Chunks kept after Flashrank"],
                 [<Inline>FLASHRANK_HIGH_THRESHOLD</Inline>, "0.70", "retrieval", "High-confidence band"],
@@ -504,12 +504,12 @@ X-API-Key: cav_…`}</Code>
                 [<Inline>MAX_RETRIEVAL_ATTEMPTS</Inline>, "2", "retrieval", "Retry retrieve with broader query"],
                 [<Inline>MAX_HISTORY_TURNS</Inline>, "10", "chat", "History turns sent to the LLM"],
                 [<Inline>MAX_USER_MESSAGE_CHARS</Inline>, "2000", "chat", "User message length cap"],
-                [<Inline>LOW_CONFIDENCE_REPLY</Inline>, "(fixed string)", "chat", "Reply when band is low"],
+                [<Inline>LOW_CONFIDENCE_REPLY</Inline>, "(fixed string)", "assistant", "Reply when band is low"],
                 [<Inline>MAX_API_RETRIES</Inline>, "3", "chat", "Retries for OpenAI / Pinecone calls"],
                 [<Inline>RETRY_DELAY_SECONDS</Inline>, "1.5", "chat", "Backoff between retries"],
                 [<Inline>ASSISTANT_NAME</Inline>, "Document Assistant", "assistant", "Display / prompt identity"],
                 [<Inline>ASSISTANT_ROLE</Inline>, "(document helper)", "assistant", "Specialty in system prompts"],
-                [<Inline>ASSISTANT_ORGANISATION</Inline>, "Chatbot Avatar", "assistant", "Org in system prompts"],
+                [<Inline>ASSISTANT_ORGANISATION</Inline>, "QubeAI Config", "assistant", "Org in system prompts"],
                 [<Inline>PINECONE_INDEX_NAME</Inline>, "chatbot-avatar", "pinecone", "Also session-overridable"],
                 [<Inline>PINECONE_NAMESPACE</Inline>, "(empty)", "pinecone", "Active collection namespace"],
                 [<Inline>DATA_COLLECTION_ID</Inline>, "(empty)", "pinecone", "Mongo collection id → sets namespace"],
@@ -1021,7 +1021,7 @@ npm run dev   # http://localhost:3001`}</Code>
             </P>
             <SubTitle>Session-scoped keys</SubTitle>
             <P>
-              See <a href="#variables" className="font-medium text-[#0071e3] hover:underline">Variables → Dynamic</a>{" "}
+              See <a href="#variables" className="font-medium text-[#8b0d64] hover:underline">Variables → Dynamic</a>{" "}
               for the full list. Secrets and Mongo / ingest infrastructure stay
               global (Fixed).
             </P>

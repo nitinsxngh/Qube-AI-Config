@@ -241,7 +241,7 @@ export default function DatasetCategoryPage() {
                     onClick={() => setStatusFilter(value)}
                     className={`h-full rounded-[2px] px-3 text-[12px] font-semibold transition ${
                       statusFilter === value
-                        ? "bg-white text-[#0071e3] shadow-sm"
+                        ? "bg-white text-[#8b0d64] shadow-sm"
                         : "text-[#86868b] hover:text-[#1d1d1f]"
                     }`}
                   >

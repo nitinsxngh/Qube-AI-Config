@@ -5,6 +5,10 @@ import { useRouter } from "next/navigation";
 import { Card } from "@/components/ui";
 import { api, type DatasetCategory, type PublishedConfig } from "@/lib/api";
 
+function sessionForConfig(config: PublishedConfig) {
+  return (config.session_name || config.name || "").trim();
+}
+
 function formatDate(value: string) {
   if (!value) return "—";
   const date = new Date(value.includes("T") ? value : `${value}T00:00:00`);
@@ -26,7 +30,7 @@ export default function PublishedConfigsPage() {
   const [busyId, setBusyId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
-  const [applySession, setApplySession] = useState("default");
+  const [applySession, setApplySession] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
@@ -77,7 +81,11 @@ export default function PublishedConfigsPage() {
   }, [categories, configs]);
 
   async function handleApply(config: PublishedConfig) {
-    const session = applySession.trim() || "default";
+    const session = applySession.trim() || sessionForConfig(config);
+    if (!session) {
+      setError("This config has no name to apply.");
+      return;
+    }
     setBusyId(config.id);
     setError("");
     setMessage("");
@@ -98,8 +106,8 @@ export default function PublishedConfigsPage() {
     setError("");
     setMessage("");
     try {
-      // Apply into the session used on the RAG page (default or chosen)
-      const session = applySession.trim() || "default";
+      // Apply into this config's session (or an override)
+      const session = applySession.trim() || sessionForConfig(config);
       await api.updateConfig(config.settings, session);
       const params = new URLSearchParams({
         session,
@@ -160,7 +168,7 @@ export default function PublishedConfigsPage() {
             value={applySession}
             onChange={(e) => setApplySession(e.target.value)}
             className="apple-input h-9 w-[160px] !py-0"
-            placeholder="default"
+            placeholder="Config name"
           />
         </label>
       </div>
@@ -223,7 +231,7 @@ export default function PublishedConfigsPage() {
                     <li
                       key={config.id}
                       className={`px-4 py-3 ${
-                        isSelected ? "bg-[#0071e3]/05" : ""
+                        isSelected ? "bg-[#8b0d64]/05" : ""
                       }`}
                     >
                       <div className="flex flex-col gap-3">

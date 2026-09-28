@@ -278,7 +278,7 @@ export default function RagModelPage() {
                     onClick={() => setKindFilter(value)}
                     className={`h-full rounded-[2px] px-3 text-[12px] font-semibold transition ${
                       kindFilter === value
-                        ? "bg-white text-[#0071e3] shadow-sm"
+                        ? "bg-white text-[#8b0d64] shadow-sm"
                         : "text-[#86868b] hover:text-[#1d1d1f]"
                     }`}
                   >
@@ -345,7 +345,7 @@ export default function RagModelPage() {
                           className={`inline-flex rounded-[2px] px-2 py-0.5 text-[11px] font-semibold ${
                             model.kind === "embedding"
                               ? "bg-[#af52de]/12 text-[#af52de]"
-                              : "bg-[#0071e3]/12 text-[#0071e3]"
+                              : "bg-[#8b0d64]/12 text-[#8b0d64]"
                           }`}
                         >
                           {KIND_LABEL[model.kind]}
@@ -414,7 +414,7 @@ export default function RagModelPage() {
                   onClick={() => setForm((f) => ({ ...f, kind: "model" }))}
                   className={`flex-1 rounded-[2px] px-3 py-2 text-[12px] font-semibold transition ${
                     form.kind === "model"
-                      ? "bg-white text-[#0071e3] shadow-sm"
+                      ? "bg-white text-[#8b0d64] shadow-sm"
                       : "text-[#86868b] hover:text-[#1d1d1f]"
                   }`}
                 >
@@ -468,7 +468,7 @@ export default function RagModelPage() {
                 Manage categories in{" "}
                 <Link
                   href="/rag/dataset-category"
-                  className="font-medium text-[#0071e3] hover:underline"
+                  className="font-medium text-[#8b0d64] hover:underline"
                 >
                   Categories
                 </Link>

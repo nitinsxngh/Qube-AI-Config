@@ -12,6 +12,7 @@ import {
 type ChatPanelProps = {
   sessionName: string;
   onSessionNameChange: (name: string) => void;
+  onNew?: () => void;
   onResponse: (meta: ChatResponse | null) => void;
 };
 
@@ -23,6 +24,7 @@ type PendingForm = {
 export default function ChatPanel({
   sessionName,
   onSessionNameChange,
+  onNew,
   onResponse,
 }: ChatPanelProps) {
   const [draftName, setDraftName] = useState(sessionName);
@@ -49,6 +51,12 @@ export default function ChatPanel({
       skipNextHistoryLoad.current = false;
       return;
     }
+    if (!sessionName) {
+      setMessages([]);
+      setPendingForm(null);
+      onResponse(null);
+      return;
+    }
     loadHistory();
   }, [sessionName]);
 
@@ -68,14 +76,6 @@ export default function ChatPanel({
     }
   }
 
-  function commitSessionName(raw: string) {
-    const next = raw.trim() || "default";
-    if (next !== sessionName) {
-      onSessionNameChange(next);
-    }
-    setDraftName(next);
-  }
-
   function openForm(schema: IntentFormSchema, messageIndex: number) {
     const initial: Record<string, string | boolean> = {};
     for (const field of schema.fields || []) {
@@ -90,7 +90,11 @@ export default function ChatPanel({
     const text = input.trim();
     if (!text || loading) return;
 
-    const activeSession = draftName.trim() || sessionName || "default";
+    const activeSession = draftName.trim() || sessionName;
+    if (!activeSession) {
+      setError("Select a config or click New first.");
+      return;
+    }
     if (activeSession !== sessionName) {
       skipNextHistoryLoad.current = true;
       onSessionNameChange(activeSession);
@@ -185,14 +189,10 @@ export default function ChatPanel({
   }
 
   function handleNewSession() {
-    const name = `session-${Date.now()}`;
-    onSessionNameChange(name);
-    setDraftName(name);
-    setMessages([]);
-    setStreamingText("");
-    setStatus("");
-    setPendingForm(null);
-    onResponse(null);
+    if (onNew) {
+      onNew();
+      return;
+    }
   }
 
   const showStreamingBubble = loading && (streamingText || status);
@@ -201,20 +201,11 @@ export default function ChatPanel({
     <div className="flex h-full flex-col">
       <div className="flex flex-wrap items-center gap-2 border-b border-black/[0.06] px-4 py-2">
         <h2 className="mr-auto text-[14px] font-semibold text-[#1d1d1f]">RAG</h2>
-        <input
-          value={draftName}
-          onChange={(e) => setDraftName(e.target.value)}
-          onBlur={() => commitSessionName(draftName)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              e.preventDefault();
-              commitSessionName(draftName);
-            }
-          }}
-          className="apple-input max-w-[180px] py-1.5 text-[13px]"
-          placeholder="Session name"
-          title="Session name (unique key)"
-        />
+        {sessionName ? (
+          <span className="max-w-[180px] truncate text-[12px] text-[#86868b]" title={sessionName}>
+            {sessionName}
+          </span>
+        ) : null}
         <button type="button" onClick={handleNewSession} className="apple-btn-secondary text-[13px]">
           New
         </button>
@@ -226,9 +217,13 @@ export default function ChatPanel({
       <div className="flex-1 space-y-3 overflow-y-auto px-5 py-5">
         {messages.length === 0 && !showStreamingBubble && (
           <div className="flex h-full flex-col items-center justify-center text-center">
-            <p className="text-[15px] font-medium text-[#1d1d1f]">Start a conversation</p>
+            <p className="text-[15px] font-medium text-[#1d1d1f]">
+              {sessionName ? "Start a conversation" : "Select a config"}
+            </p>
             <p className="mt-1 text-[14px] text-[#86868b]">
-              Ask questions about the uploaded document.
+              {sessionName
+                ? "Ask questions about the uploaded document."
+                : "Choose a created config, or click New to name one."}
             </p>
           </div>
         )}
@@ -240,7 +235,7 @@ export default function ChatPanel({
               <div
                 className={`max-w-[78%] rounded-[2px] px-4 py-2.5 text-[15px] leading-relaxed ${
                   msg.role === "human"
-                    ? "bg-[#0071e3] text-white"
+                    ? "bg-[#8b0d64] text-white"
                     : "bg-[#e9e9eb] text-[#1d1d1f]"
                 }`}
               >
@@ -268,7 +263,7 @@ export default function ChatPanel({
               {streamingText ? (
                 <>
                   {streamingText}
-                  <span className="ml-0.5 inline-block h-4 w-[2px] animate-pulse bg-[#0071e3] align-middle" />
+                  <span className="ml-0.5 inline-block h-4 w-[2px] animate-pulse bg-[#8b0d64] align-middle" />
                 </>
               ) : (
                 <span className="inline-flex items-center gap-2 text-[#86868b]">
@@ -299,7 +294,7 @@ export default function ChatPanel({
         />
         <button
           type="submit"
-          disabled={loading || !input.trim()}
+          disabled={loading || !input.trim() || !sessionName}
           className="apple-btn-primary px-4 py-2 text-[14px]"
         >
           {loading ? "…" : "Send"}

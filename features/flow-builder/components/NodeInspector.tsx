@@ -157,7 +157,7 @@ export default function NodeInspector() {
                 </span>
                 <button
                   type="button"
-                  className="text-[11px] font-medium text-[#0071e3] hover:underline"
+                  className="text-[11px] font-medium text-[#8b0d64] hover:underline"
                   onClick={() => addIntentOption(node.id)}
                 >
                   + Add
@@ -168,7 +168,7 @@ export default function NodeInspector() {
                   <div key={opt.id} className="space-y-1">
                     <div className="flex items-center gap-2">
                       <input
-                        className="min-w-0 flex-1 rounded-lg bg-[#f5f5f7] px-3 py-2 text-[13px] outline-none focus:bg-white focus:ring-2 focus:ring-[#0071e3]/20"
+                        className="min-w-0 flex-1 rounded-lg bg-[#f5f5f7] px-3 py-2 text-[13px] outline-none focus:bg-white focus:ring-2 focus:ring-[#8b0d64]/20"
                         value={opt.label}
                         onChange={(e) =>
                           updateIntentOption(node.id, opt.id, {
@@ -188,7 +188,7 @@ export default function NodeInspector() {
                       </button>
                     </div>
                     <input
-                      className="w-full rounded-lg bg-[#f5f5f7] px-3 py-1.5 text-[11px] outline-none focus:bg-white focus:ring-2 focus:ring-[#0071e3]/20"
+                      className="w-full rounded-lg bg-[#f5f5f7] px-3 py-1.5 text-[11px] outline-none focus:bg-white focus:ring-2 focus:ring-[#8b0d64]/20"
                       value={opt.keywords || ""}
                       onChange={(e) =>
                         updateIntentOption(node.id, opt.id, {

@@ -58,7 +58,7 @@ export default function FlowEdge({
         markerEnd={markerEnd}
         style={{
           ...style,
-          stroke: selected || hovered ? "#0071e3" : style?.stroke || "#86868b",
+          stroke: selected || hovered ? "#8b0d64" : style?.stroke || "#86868b",
           strokeWidth: selected || hovered ? 2.25 : style?.strokeWidth || 1.5,
         }}
         interactionWidth={24}

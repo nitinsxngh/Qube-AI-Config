@@ -57,17 +57,17 @@ function LoginForm() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0,113,227,0.16), transparent 55%), radial-gradient(ellipse 50% 40% at 100% 100%, rgba(0,0,0,0.04), transparent 50%), #f5f5f7",
+            "radial-gradient(ellipse 80% 60% at 50% -10%, rgba(139,13,100,0.16), transparent 55%), radial-gradient(ellipse 50% 40% at 100% 100%, rgba(0,0,0,0.04), transparent 50%), #f5f5f7",
         }}
       />
 
       <div className="relative w-full max-w-[400px]">
         <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-[2px] bg-[#0071e3] text-[18px] font-semibold text-white shadow-sm">
-            C
+          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-[2px] bg-[#8b0d64] text-[18px] font-semibold text-white shadow-sm">
+            Q
           </div>
           <h1 className="text-[28px] font-semibold tracking-tight text-[#1d1d1f]">
-            Chatbot Avatar
+            QubeAI Config
           </h1>
           <p className="mt-1 text-[15px] text-[#86868b]">
             Sign in to manage RAG, ingest, and configs

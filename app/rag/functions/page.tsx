@@ -194,7 +194,7 @@ export default function FunctionsPage() {
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
         <p className="text-[13px] text-[#86868b]">
           Manage callable function names used by{" "}
-          <Link href="/intents" className="text-[#0071e3] hover:underline">
+          <Link href="/intents" className="text-[#8b0d64] hover:underline">
             Intent forms
           </Link>
           .
@@ -271,7 +271,7 @@ export default function FunctionsPage() {
                     onClick={() => setStatusFilter(value)}
                     className={`h-full rounded-[2px] px-3 text-[12px] font-semibold transition ${
                       statusFilter === value
-                        ? "bg-white text-[#0071e3] shadow-sm"
+                        ? "bg-white text-[#8b0d64] shadow-sm"
                         : "text-[#86868b] hover:text-[#1d1d1f]"
                     }`}
                   >

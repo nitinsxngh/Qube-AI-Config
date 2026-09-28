@@ -39,11 +39,11 @@ export default function Nav() {
         }`}
       >
         <Link href="/rag" className="flex shrink-0 items-center gap-2">
-          <div className="flex h-6 w-6 items-center justify-center rounded-[2px] bg-[#0071e3] text-[11px] font-semibold text-white">
-            C
+          <div className="flex h-6 w-6 items-center justify-center rounded-[2px] bg-[#8b0d64] text-[11px] font-semibold text-white">
+            Q
           </div>
           <span className="text-[14px] font-semibold tracking-tight text-[#1d1d1f]">
-            Chatbot Avatar
+            QubeAI Config
           </span>
         </Link>
 
@@ -101,7 +101,7 @@ export default function Nav() {
                 href={link.href}
                 className={`shrink-0 rounded-[2px] px-2.5 py-1 text-[11px] font-medium ${
                   active
-                    ? "bg-[#0071e3]/10 text-[#0071e3]"
+                    ? "bg-[#8b0d64]/10 text-[#8b0d64]"
                     : "text-[#86868b]"
                 }`}
               >

@@ -285,7 +285,7 @@ export default function IngestPage() {
                 accept="application/pdf,.pdf"
                 multiple
                 onChange={(e) => setFiles(Array.from(e.target.files || []))}
-                className="block w-full text-[14px] text-[#1d1d1f] file:mr-3 file:rounded-[2px] file:border-0 file:bg-[#0071e3] file:px-4 file:py-2 file:text-[13px] file:font-medium file:text-white"
+                className="block w-full text-[14px] text-[#1d1d1f] file:mr-3 file:rounded-[2px] file:border-0 file:bg-[#8b0d64] file:px-4 file:py-2 file:text-[13px] file:font-medium file:text-white"
               />
               {files.length > 0 && (
                 <ul className="mt-2 space-y-1 text-[13px] text-[#1d1d1f]">
@@ -358,7 +358,7 @@ export default function IngestPage() {
                   </div>
                   <button
                     type="button"
-                    className="text-[13px] font-medium text-[#0071e3]"
+                    className="text-[13px] font-medium text-[#8b0d64]"
                     onClick={() => {
                       setMode("update");
                       setSelectedId(c.id);

@@ -241,6 +241,7 @@ export type IngestResponse = {
   topics?: Record<string, string[]>;
   documents?: IngestDocumentResult[];
   document_count?: number;
+  stored_documents?: Record<string, unknown>[];
 };
 
 export type CatalogModel = {
@@ -526,31 +527,46 @@ export const api = {
       replace_namespace?: boolean;
     },
   ) => {
-    const form = new FormData();
-    files.forEach((file) => form.append("files", file));
-    if (options?.collection_id) form.append("collection_id", options.collection_id);
-    if (options?.collection_name) form.append("collection_name", options.collection_name);
-    if (options?.collection_description)
-      form.append("collection_description", options.collection_description);
-    if (options?.collection_namespace)
-      form.append("collection_namespace", options.collection_namespace);
-    if (options?.replace_namespace) form.append("replace_namespace", "true");
-    const res = await fetch(`${API_BASE}/api/ingest/upload/batch`, {
-      method: "POST",
-      headers: {
-        ...authHeaders(),
-      },
-      body: form,
-    });
-    if (res.status === 401 && typeof window !== "undefined") {
-      clearAuthSession();
-      window.location.href = "/login";
+    if (!files.length) {
+      throw new Error("No files provided");
     }
-    if (!res.ok) {
-      const detail = await res.text();
-      throw new Error(detail || `Batch upload failed (${res.status})`);
+    let collectionId = options?.collection_id || "";
+    let last: IngestResponse | null = null;
+    const stored: Record<string, unknown>[] = [];
+    let pages = 0;
+    let chunks = 0;
+    let documentCount = 0;
+
+    for (let i = 0; i < files.length; i++) {
+      const ingest = await api.uploadIngest(files[i], {
+        collection_id: collectionId || undefined,
+        collection_name: collectionId ? undefined : options?.collection_name,
+        collection_description: collectionId
+          ? undefined
+          : options?.collection_description,
+        collection_namespace: collectionId
+          ? undefined
+          : options?.collection_namespace,
+        replace_namespace: i === 0 ? options?.replace_namespace : false,
+      });
+      last = ingest;
+      collectionId = ingest.collection_id || ingest.collection?.id || collectionId;
+      stored.push(...(ingest.stored_documents || []));
+      pages += ingest.pages || 0;
+      chunks += ingest.chunks || 0;
+      documentCount += ingest.document_count || 1;
     }
-    return res.json() as Promise<IngestResponse>;
+
+    if (!last) {
+      throw new Error("Batch upload finished with no response");
+    }
+    return {
+      ...last,
+      pages,
+      chunks,
+      document_count: documentCount,
+      stored_documents: stored,
+    };
   },
 
   listDataCollections: (enabledOnly = false) =>
@@ -949,6 +965,7 @@ export const api = {
       description: string;
       dataset_category: string;
       settings: Record<string, string | number | boolean>;
+      session_name: string | null;
       enabled: boolean;
     }>,
   ) =>

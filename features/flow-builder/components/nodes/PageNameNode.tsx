@@ -11,7 +11,7 @@ export default function PageNameNode({
   return (
     <FlowNodeShell
       selected={selected}
-      accent="#0071e3"
+      accent="#8b0d64"
       badge="St"
       kind="Start"
       title={data.pageName || "Start"}

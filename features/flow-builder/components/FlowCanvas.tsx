@@ -131,7 +131,7 @@ function CanvasInner() {
           reconnectable: true,
           style: { stroke: "#86868b", strokeWidth: 1.5 },
         }}
-        connectionLineStyle={{ stroke: "#0071e3", strokeWidth: 1.5 }}
+        connectionLineStyle={{ stroke: "#8b0d64", strokeWidth: 1.5 }}
         className="flow-canvas"
       >
         <Background
@@ -224,7 +224,7 @@ function CanvasInner() {
           className="flow-minimap"
           nodeColor={(n) => {
             const map: Record<string, string> = {
-              pageName: "#0071e3",
+              pageName: "#8b0d64",
               message: "#34c759",
               question: "#ff9f0a",
               condition: "#af52de",

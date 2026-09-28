@@ -9,10 +9,10 @@
   --text: #1d1d1f;
   --text-secondary: #86868b;
   --border: rgba(0, 0, 0, 0.08);
-  --accent: #0071e3;
-  --accent-hover: #0077ed;
+  --accent: #8b0d64;
+  --accent-hover: #a31276;
   --fill: #f5f5f7;
-  --bubble-user: #0071e3;
+  --bubble-user: #8b0d64;
   --bubble-ai: #e9e9eb;
   --radius: 2px;
 }
@@ -38,12 +38,12 @@ body {
 
   .apple-input {
     @apply w-full rounded-[2px] bg-[#f5f5f7] px-4 py-2.5 text-[15px] text-[#1d1d1f] outline-none transition;
-    @apply placeholder:text-[#86868b] focus:bg-white focus:ring-2 focus:ring-[#0071e3]/20;
+    @apply placeholder:text-[#86868b] focus:bg-white focus:ring-2 focus:ring-[#8b0d64]/20;
   }
 
   .apple-btn-primary {
-    @apply inline-flex items-center justify-center rounded-[2px] bg-[#0071e3] px-5 py-2.5 text-[15px] font-medium text-white transition;
-    @apply hover:bg-[#0077ed] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40;
+    @apply inline-flex items-center justify-center rounded-[2px] bg-[#8b0d64] px-5 py-2.5 text-[15px] font-medium text-white transition;
+    @apply hover:bg-[#a31276] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40;
   }
 
   .apple-btn-secondary {
@@ -158,7 +158,7 @@ body {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: #0071e3;
+  color: #8b0d64;
 }
 
 .flow-toolbar__title {
@@ -261,12 +261,12 @@ body {
 }
 
 .flow-toolbar__btn--primary {
-  background: #0071e3;
+  background: #8b0d64;
   color: #ffffff;
 }
 
 .flow-toolbar__btn--primary:hover {
-  background: #0077ed;
+  background: #a31276;
 }
 
 .flow-toolbar__btn--danger {
@@ -646,7 +646,7 @@ body {
 .flow-studio__tabs button.is-active {
   background: #ffffff;
   color: #1d1d1f;
-  border-bottom-color: #0071e3;
+  border-bottom-color: #8b0d64;
 }
 
 .flow-studio__tab-body {
@@ -727,11 +727,11 @@ body {
 
 .flow-test__ghost.is-on {
   background: rgba(0, 113, 227, 0.1);
-  color: #0071e3;
+  color: #8b0d64;
 }
 
 .flow-test__primary {
-  background: #0071e3;
+  background: #8b0d64;
   color: #ffffff;
 }
 
@@ -767,7 +767,7 @@ body {
 
 .flow-test__bubble.is-human {
   margin-left: auto;
-  background: #0071e3;
+  background: #8b0d64;
   color: #ffffff;
 }
 
@@ -855,7 +855,7 @@ body {
 .flow-test__composer button {
   border: 0;
   border-radius: 2px;
-  background: #0071e3;
+  background: #8b0d64;
   padding: 8px 12px;
   font-size: 12px;
   font-weight: 600;
@@ -912,12 +912,12 @@ body {
 }
 
 .flow-studio .flow-node--selected {
-  border-color: var(--node-accent, #0071e3);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--node-accent, #0071e3) 22%, transparent);
+  border-color: var(--node-accent, #8b0d64);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--node-accent, #8b0d64) 22%, transparent);
 }
 
 .flow-studio .react-flow__node.is-runtime-active .flow-node {
-  border-color: #0071e3;
+  border-color: #8b0d64;
   box-shadow:
     0 0 0 3px rgba(0, 113, 227, 0.28),
     0 8px 24px rgba(0, 113, 227, 0.12);
@@ -947,8 +947,8 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 2px;
-  background: color-mix(in srgb, var(--node-accent, #0071e3) 12%, white);
-  color: var(--node-accent, #0071e3);
+  background: color-mix(in srgb, var(--node-accent, #8b0d64) 12%, white);
+  color: var(--node-accent, #8b0d64);
   font-size: 8px;
   font-weight: 700;
 }
@@ -964,7 +964,7 @@ body {
 .flow-studio .flow-node__tag {
   flex-shrink: 0;
   border-radius: 2px;
-  background: var(--node-accent, #0071e3);
+  background: var(--node-accent, #8b0d64);
   padding: 2px 6px;
   font-size: 9px;
   font-weight: 600;
@@ -1068,7 +1068,7 @@ body {
 }
 
 .flow-studio .flow-node__handle--source {
-  background: var(--node-accent, #0071e3) !important;
+  background: var(--node-accent, #8b0d64) !important;
 }
 
 .flow-studio .flow-controls {
@@ -1126,7 +1126,7 @@ body {
 
 .flow-mode-toggle button.is-active {
   background: #ffffff;
-  color: #0071e3;
+  color: #8b0d64;
   box-shadow:
     0 1px 2px rgba(0, 0, 0, 0.08),
     0 0 0 1px rgba(0, 0, 0, 0.04);
@@ -1235,7 +1235,7 @@ body {
 }
 
 .flow-studio .flow-edge-toolbar__btn--connect {
-  color: #0071e3;
+  color: #8b0d64;
 }
 
 .flow-studio .flow-edge-toolbar__btn--connect:hover {
